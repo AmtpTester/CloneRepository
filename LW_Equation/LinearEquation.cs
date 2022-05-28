@@ -48,6 +48,18 @@ namespace LW_Equation
             equation.coefficients[equation.Size-1] -= second;
             return equation;
         }
+        static public LinearEquation operator -(LinearEquation first, LinearEquation second)
+        {
+            LinearEquation equation = first;
+            equation.coefficients[equation.Size - 1] -= second.coefficients[equation.Size - 1];
+            return equation;
+        }
+        static public LinearEquation operator +(LinearEquation first, LinearEquation second)
+        {
+            LinearEquation equation = first;
+            equation.coefficients[equation.Size - 1] += second.coefficients[equation.Size - 1];
+            return equation;
+        }
         public override bool Equals(object obj)
         {
             if (obj is LinearEquation equation)
@@ -74,6 +86,27 @@ namespace LW_Equation
         public float this[int i]
         {
             get { return coefficients[i]; }
+        }
+        public double IsDesided(params float[] nums)
+        {
+            if (nums.Length != Size - 1)
+                return 0;
+
+            bool stNums = false;
+            var sum = coefficients[0];
+            for (int i = 1; i < Size-1; i++)
+            {
+                if(!stNums)
+                for(int k = 0; k < nums.Length; k++)
+                {
+                    sum += nums[k]*coefficients[i];
+                    i++;
+                }
+                stNums = true;
+                if(i < Size-1)
+                sum += coefficients[i];
+            }
+                return (-sum)/coefficients.Last();
         }
     }
 }
