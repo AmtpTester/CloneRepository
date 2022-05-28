@@ -54,7 +54,7 @@ namespace LW_Equation
         }
         static public bool operator ==(LinearEquation first, LinearEquation second)
         {
-            return first.Equals(second);
+            return first.Size == second.Size;
         }
         static public bool operator !=(LinearEquation first, LinearEquation second)
         {
