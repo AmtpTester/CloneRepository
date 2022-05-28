@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LW_Equation;
 using System;
+using System.Collections.Generic;
 
 namespace LW_EquationTest
 {
@@ -230,6 +231,18 @@ namespace LW_EquationTest
             LinearEquation a = new LinearEquation(1, 5, 3);
             var res = a.IsDesided(1, 2);
             Assert.AreEqual(res, -4.0);
+        }
+        [TestMethod]
+        public void GetEq()
+        {
+            var res = new LinearEquation(1, 5, 3).GetDesicion().Contains("1*(1) + 5*(2) + 3*(3) = 0");
+            Assert.AreEqual(res, true);
+        }
+        [TestMethod]
+        public void DoubleList()
+        {
+            var list = new LinearEquation(1,2,3).GetDoubleList();
+            Assert.AreEqual(list.GetType(), typeof(List<double>));
         }
     }
 }
