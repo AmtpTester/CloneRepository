@@ -244,5 +244,11 @@ namespace LW_EquationTest
             var list = new LinearEquation(1,2,3).GetDoubleList();
             Assert.AreEqual(list.GetType(), typeof(List<double>));
         }
+        [TestMethod]
+        public void GetRandNumbs()
+        {
+            var arr = new LinearEquation();
+            Assert.AreEqual(arr.Size >= 1, true);
+        }
     }
 }
