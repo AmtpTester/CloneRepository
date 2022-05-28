@@ -8,8 +8,9 @@ namespace LW_Equation
 {
     public class LinearEquation
     {
-        List<float> coefficients;
+        private List<float> coefficients;
         public int Size => coefficients.Count;
+
         public LinearEquation(float b, float aN, params float[] coefficients)
         {
             this.coefficients = new List<float>();
