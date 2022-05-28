@@ -21,8 +21,9 @@ namespace LW_Equation
         {
             this.coefficients = new List<float>();
             this.coefficients.Add(b);
-            this.coefficients.AddRange(coefficients);
             this.coefficients.Add(aN);
+            this.coefficients.AddRange(coefficients);
+
         }
         public LinearEquation(List<float> coefficients)
         {
@@ -35,7 +36,7 @@ namespace LW_Equation
         static public LinearEquation operator+ (LinearEquation first, float second)
         {
             LinearEquation equation = first;
-            equation.coefficients[0] += second;
+            equation.coefficients[equation.Size - 1] += second;
             return equation;
         }
         /// <summary>
@@ -44,7 +45,7 @@ namespace LW_Equation
         static public LinearEquation operator- (LinearEquation first, float second)
         {
             LinearEquation equation = first;
-            equation.coefficients[0] -= second;
+            equation.coefficients[equation.Size-1] -= second;
             return equation;
         }
         public override bool Equals(object obj)
