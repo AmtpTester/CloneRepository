@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LW_Equation;
 using System;
+using System.Collections.Generic;
 
 namespace LW_EquationTest
 {
@@ -202,6 +203,52 @@ namespace LW_EquationTest
             LinearEquation result = a - b;
 
             Assert.AreEqual(new LinearEquation(1, 2F), result);
+        }
+        [TestMethod]
+        public void LinearEquationTestOpeartorEqMinusEq()
+        {
+            LinearEquation a = new LinearEquation(1, 3);
+            LinearEquation b = new LinearEquation(1, 3);
+
+            LinearEquation result = a - b;
+
+            Assert.AreEqual(new LinearEquation(1, 0), result);
+        }
+        [TestMethod]
+        public void LinearEquationTestOpeartorEqPlusEq()
+        {
+            LinearEquation a = new LinearEquation(1, 3);
+            LinearEquation b = new LinearEquation(1, 3);
+
+            LinearEquation result = a + b;
+
+            Assert.AreEqual(new LinearEquation(1, 6), result);
+        }
+
+        [TestMethod]
+        public void EqHasDesicion()
+        {
+            LinearEquation a = new LinearEquation(1, 5, 3);
+            var res = a.IsDesided(1, 2);
+            Assert.AreEqual(res, -4.0);
+        }
+        [TestMethod]
+        public void GetEq()
+        {
+            var res = new LinearEquation(1, 5, 3).GetDesicion().Contains("1*(1) + 5*(2) + 3*(3) = 0");
+            Assert.AreEqual(res, true);
+        }
+        [TestMethod]
+        public void DoubleList()
+        {
+            var list = new LinearEquation(1,2,3).GetDoubleList();
+            Assert.AreEqual(list.GetType(), typeof(List<double>));
+        }
+        [TestMethod]
+        public void GetRandNumbs()
+        {
+            var arr = new LinearEquation();
+            Assert.AreEqual(arr.Size >= 1, true);
         }
     }
 }
