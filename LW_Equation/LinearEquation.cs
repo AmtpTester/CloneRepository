@@ -58,11 +58,11 @@ namespace LW_Equation
         }
         static public bool operator !=(LinearEquation first, LinearEquation second)
         {
-            return !first.Equals(second);
+            return first.Size != second.Size;
         }
         public float this[int i]
         {
-            get { return 0; }
+            get { return coefficients[i]; }
         }
     }
 }
